@@ -1,8 +1,32 @@
 /**
  * es6 modules and imports
  */
-import sayHello from './hello';
-sayHello('World');
+//import sayHello from './hello';
+
+//console.log(sayHello);
+//sayHello('World');
+
+
+function onReady(callback) {
+    let intervalID = window.setInterval(checkReady, 1000);
+    function checkReady() {
+        if (document.getElementsByTagName('body')[0] !== undefined) {
+            window.clearInterval(intervalID);
+            callback.call(this);
+        }
+    }
+}
+
+
+function show(id, value) {
+    document.getElementById(id).style.display = value ? 'block' : 'none';
+}
+
+onReady(function () {
+    show('page', true);
+    show('loading', false);
+});
+
 
 /**
  * require style imports
