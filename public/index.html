@@ -8,15 +8,16 @@
 <body>
 <div id="page">
     <div class="container">
-
+         <h1 id="welcome"><span class="deco">☆</span> Enter your Movie and Rate it! <span class="deco">☆</span></h1>
         <ul id="movieList">
-
+            <h3 id="loading"></h3>
         </ul>
         <form method="post" action="/api/movies">
-            <span>Title:</span>
+            <hr>
+            <div>Title:</div>
             <input type="text" id="title">
-            <span>Rating</span>
-            <select id="rating" name="Rating">
+            <div>Rating:</div>
+            <select id="rating" name="rating">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -25,11 +26,9 @@
             </select>
             <button type="button" id="button">submit</button>
         </form>
-        <h1>Hello There!</h1>
-        <p>To get started, edit <code>src/index.js</code>.</p>
     </div>
 </div>
-<div id="loading"></div>
+
 
 
 

@@ -11,14 +11,24 @@
       "id": 2
     },
     {
-      "title": "MOVIE",
-      "rating": "1",
+      "title": "Mr Nobody",
+      "rating": "5",
       "id": 3
     },
     {
-      "title": "Test",
-      "rating": "3",
+      "title": "halloween",
+      "rating": "5",
       "id": 4
+    },
+    {
+      "title": "house",
+      "stars": "1",
+      "id": 5
+    },
+    {
+      "title": "IT",
+      "stars": "5",
+      "id": 6
     }
   ]
 }

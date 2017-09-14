@@ -55,7 +55,7 @@ function addMovie() {
         'content-Type': 'application/json'
     });
 
-    let movieObj = {title: movieTitle, rating: movieRating};
+    let movieObj = {title: movieTitle, stars: movieRating};
     console.log(movieObj);
     let fetchOptions = {
         method: "POST",
@@ -75,7 +75,7 @@ document.getElementById("button").addEventListener("click", addMovie);
 
 //add to html
 function addMovieToHtml(title, rating) {
-    document.getElementById("movieList").innerHTML += `<li>${title}${rating}</li>`
+    document.getElementById("movieList").innerHTML += `<li>${title} - ${rating}</li>`
 }
 
 
