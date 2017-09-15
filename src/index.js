@@ -32,6 +32,12 @@
 /**
  * require style imports
  */
+import $ from 'jquery';
+
+import loadGif from './hello.js';
+
+loadGif();
+
 const getMovies = require('./getMovies.js');
 
 getMovies().then((movies) => {
@@ -40,6 +46,8 @@ getMovies().then((movies) => {
         addMovieToHtml(title, rating)
 
     });
+    $(".container").show();
+    $("#loader").hide();
 }).catch((error) => {
     alert('Oh no! Something went wrong.\nCheck the console for details.');
     console.log(error);
