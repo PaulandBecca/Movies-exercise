@@ -45,10 +45,11 @@ const getMovies = require('./getMovies.js');
 // Brings in list of movies
 getMovies().then((movies) => {
     document.getElementById("loading").innerHTML = 'Here are the movies:';
-    movies.forEach(({title, rating}) => {
-        addMovieToHtml(title, rating)
+    movies.forEach(({title, rating, id}) => {
+        addMovieToHtml(title, rating, id)
 
-    });
+
+    }); console.log(movies);
 
     // Hides loader and shows html
     $(".container").show();
@@ -75,23 +76,50 @@ function addMovie() {
         body: JSON.stringify(movieObj),
         headers: header
     };
+
     document.getElementById("title").value = "";
     document.getElementById("rating").value = "1";
     fetch("/api/movies", fetchOptions)
         .then((response) => response.json());
     addMovieToHtml(movieTitle, movieRating);
 
-}
+    let movies = {title: movieTitle, stars: movieRating};
+    let fetchDelete = {
+        method: "DELETE",
+        body: JSON.stringify(movies),
+        headers: header
+    };
+    document.getElementById("title").value = "";
+    document.getElementById("rating").value = "1";
+    fetch("/api/movies", fetchDelete)
+        .then((response) => response.json());
+    deleteMovieFromHtml(movieTitle, movieRating);
+
+    }
 
 // Event listener for submit button
-document.getElementById("button").addEventListener("click", addMovie);
+    document.getElementById("button").addEventListener("click", addMovie);
 
-// Adding to db.json file
-function addMovieToHtml(title, rating) {
-    document.getElementById("movieList").innerHTML += `<li>${title} - ${rating}</li>`
+
+    let deletebtn= document.getElementsByClassName("dltbtn");
+    for (let i=0; i< deletebtn.length; i++)
+        deletebtn[i].addEventListener("click", deleteMovie)
+
+
+    function deleteMovie (event){
+    event.preventDefault();
+    console.log(event);
+    let dataID = event.target.getAttribute("data-id")
 }
 
 
+// Adding to db.json file
+function addMovieToHtml(title, rating, id) {
+    document.getElementById("movieList").innerHTML += `<li>${title} - ${rating}<button class="dltbtn" data-id="${id}">Delete</button></li>`
 
-
+}
+// function deleteMovieFromHtml(title, rating) {
+//
+//     document.getElementById("movieList").innerHTML += `<li> ${title} - ${rating}</li>`
+// }
 

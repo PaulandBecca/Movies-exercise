@@ -3,4 +3,6 @@ const getMovies = () => {
     .then(response => response.json());
 };
 
+
+
 module.exports = getMovies;
