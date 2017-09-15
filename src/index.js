@@ -32,29 +32,34 @@
 /**
  * require style imports
  */
+//we can use jquery
 import $ from 'jquery';
 
+// Brings in the code from hello.js
 import loadGif from './hello.js';
 
 loadGif();
 
 const getMovies = require('./getMovies.js');
 
+// Brings in list of movies
 getMovies().then((movies) => {
     document.getElementById("loading").innerHTML = 'Here are the movies:';
     movies.forEach(({title, rating}) => {
         addMovieToHtml(title, rating)
 
     });
+
+    // Hides loader and shows html
     $(".container").show();
     $("#loader").hide();
 }).catch((error) => {
-    alert('Oh no! Something went wrong.\nCheck the console for details.');
+    alert('Something went wrong');
     console.log(error);
 
 });
 
-//here we have our stringify object
+// Grabbing json objects and adding the movies
 function addMovie() {
 
     let movieTitle = document.getElementById("title").value;
@@ -78,10 +83,10 @@ function addMovie() {
 
 }
 
-//event listener for button
+// Event listener for submit button
 document.getElementById("button").addEventListener("click", addMovie);
 
-//add to html
+// Adding to db.json file
 function addMovieToHtml(title, rating) {
     document.getElementById("movieList").innerHTML += `<li>${title} - ${rating}</li>`
 }
